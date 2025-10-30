@@ -1,0 +1,21 @@
+.opContainer{
+     display: flex;           /* Enables horizontal layout */
+  gap: 1rem;               /* Adds spacing between the cards */
+  justify-content: flex-start; /* Aligns them to the left */
+  align-items: stretch; 
+}
+
+.opCard{
+  padding: 1rem;
+  flex: 1;                 /* Optional: makes cards grow evenly */
+  min-width: 200px;     
+}
+
+#sticky{
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    
+
+}
+
