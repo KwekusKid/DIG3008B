@@ -1,21 +1,80 @@
-.opContainer{
-     display: flex;           /* Enables horizontal layout */
-  gap: 1rem;               /* Adds spacing between the cards */
-  justify-content: flex-start; /* Aligns them to the left */
-  align-items: stretch; 
-}
-
-.opCard{
-  padding: 1rem;
-  flex: 1;                 /* Optional: makes cards grow evenly */
-  min-width: 200px;     
-}
-
-#sticky{
+.opContainer {
     display: flex;
-    gap: 20px;
-    justify-content: flex-end;
-    
-
+    /* Enables horizontal layout */
+    gap: 1rem;
+    /* Adds spacing between the cards */
+    justify-content: flex-start;
+    /* Aligns them to the left */
+    align-items: stretch;
 }
 
+.opCard {
+    padding: 1rem;
+    flex: 1;
+    /* Optional: makes cards grow evenly */
+    min-width: 200px;
+}
+
+#sticky ul {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: stretch;
+    list-style: none;
+    justify-content: space-around;
+}
+
+#sticky ul li a {
+    text-decoration: none;
+}
+
+.topNav {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centers the title */
+    align-items: center;
+    padding: 1rem 2rem;
+    height: 80px; /* Adjust as needed */
+}
+
+/* Site title - centered */
+.topNav a {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+}
+
+#Home {
+    margin: 0;
+    font-size: 1.5rem;
+    
+}
+
+/* Search container - right corner */
+.searchContainer {
+    position: absolute;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+#searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
