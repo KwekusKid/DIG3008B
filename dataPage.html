@@ -76,52 +76,81 @@
     </nav>
 
     <div class="tacticBoard">
-        <svg viewBox="0 0 100 50" class="pitch">
-            <rect width="100" height="50" fill="#4a7c59" />
-
-
-            <!-- Goalkeeper -->
-            <circle cx="50" cy="45" r="2" fill="#4ecdc4" class="player" data-position="goalkeeper">
-                <title>Goalkeeper</title>
-            </circle>
-
-            <!-- Defenders (Back 4) -->
-            <circle cx="20" cy="35" r="2" fill= "#ff6b6b" class="player" data-position="leftBack">
-                <title>Left Back</title>
-            </circle>
-            <circle cx="35" cy="35" r="2" fill="#ff6b6b" class="player" data-position="leftCenterBack">
-                <title>Left Center Back</title>
-            </circle>
-            <circle cx="65" cy="35" r="2" fill="#ff6b6b" class="player" data-position="rightCenterBack">
-                <title>Right Center Back</title>
-            </circle>
-            <circle cx="80" cy="35" r="2" fill="#ff6b6b" class="player" data-position="rightBack">
-                <title>Right Back</title>
-            </circle>
-
-            <!-- Midfielders (3) -->
-            <circle cx="25" cy="25" r="2" fill="#ff6b6b" class="player" data-position="centralMidfielder">
-                <title>Central Midfielder</title>
-            </circle>
-            <circle cx="50" cy="25" r="2" fill="#ff6b6b" class="player" data-position="defensiveMidfielder">
-                <title>Defensive Midfielder</title>
-            </circle>
-            <circle cx="75" cy="25" r="2" fill="#ff6b6b" class="player" data-position="centralMidfielder">
-                <title>Central Midfielder</title>
-            </circle>
-
-            <!-- Forwards (3) -->
-            <circle cx="20" cy="15" r="2" fill="#ff6b6b" class="player" data-position="leftWinger">
-                <title>Left Winger</title>
-            </circle>
-            <circle cx="50" cy="10" r="2" fill="#ff6b6b" class="player" data-position="striker">
-                <title>Striker</title>
-            </circle>
-            <circle cx="80" cy="15" r="2" fill="#ff6b6b" class="player" data-position="rightWinger">
-                <title>Right Winger</title>
-            </circle>
-        </svg>
-    </div>
+    <svg viewBox="0 0 100 50" class="pitch">
+        <rect width="100" height="50" fill="#4a7c59"/>
+        
+        <!-- Goalkeeper -->
+        <g class="player" data-position="goalkeeper">
+            <circle cx="50" cy="45" r="2" fill="#4ecdc4"/>
+            <text x="50" y="45" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">1</text>
+            <title>Goalkeeper</title>
+        </g>
+        
+        <!-- Defenders (Back 4) -->
+        <g class="player" data-position="leftBack">
+            <circle cx="20" cy="35" r="2" fill="#ff6b6b"/>
+            <text x="20" y="35" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">3</text>
+            <title>Left Back</title>
+        </g>
+        
+        <g class="player" data-position="leftCenterBack">
+            <circle cx="35" cy="35" r="2" fill="#ff6b6b"/>
+            <title>Left Center Back</title>
+            <text x="35" y="35" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">4</text>
+            
+        </g>
+        
+        <g class="player" data-position="rightCenterBack">
+            <circle cx="65" cy="35" r="2" fill="#ff6b6b"/>
+            <text x="65" y="35" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">5</text>
+            <title>Right Center Back</title>
+        </g>
+        
+        <g class="player" data-position="rightBack">
+            <circle cx="80" cy="35" r="2" fill="#ff6b6b"/>
+            <text x="80" y="35" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">2</text>
+            <title>Right Back</title>
+        </g>
+        
+        <!-- Midfielders (3) -->
+        <g class="player" data-position="centralMidfielder">
+            <circle cx="25" cy="25" r="2" fill="#ff6b6b"/>
+            <text x="25" y="25" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">8</text>
+            <title>Central Midfielder</title>
+        </g>
+        
+        <g class="player" data-position="defensiveMidfielder">
+            <circle cx="50" cy="25" r="2" fill="#ff6b6b"/>
+            <text x="50" y="25" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">6</text>
+            <title>Defensive Midfielder</title>
+        </g>
+        
+        <g class="player" data-position="centralMidfielder">
+            <circle cx="75" cy="25" r="2" fill="#ff6b6b"/>
+            <text x="75" y="25" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">10</text>
+            <title>Central Midfielder</title>
+        </g>
+        
+        <!-- Forwards (3) -->
+        <g class="player" data-position="leftWinger">
+            <circle cx="20" cy="15" r="2" fill="#ff6b6b"/>
+            <text x="20" y="15" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">11</text>
+            <title>Left Winger</title>
+        </g>
+        
+        <g class="player" data-position="striker">
+            <circle cx="50" cy="10" r="2" fill="#ff6b6b"/>
+            <text x="50" y="10" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">9</text>
+             <title>Striker</title>
+        </g>
+        
+        <g class="player" data-position="rightWinger">
+            <circle cx="80" cy="15" r="2" fill="#ff6b6b"/>
+            <text x="80" y="15" text-anchor="middle" dy="0.3em" fill="white" font-size="1.5">7</text>
+             <title>Right Winger</title>
+        </g>
+    </svg>
+</div>
 </body>
 
 </html>
