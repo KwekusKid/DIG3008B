@@ -1,3 +1,5 @@
+npm init playwright@latest
+
 const positions = [
     {
         position: "Striker",
@@ -163,3 +165,134 @@ const positions = [
         ]
     }
 ];
+
+// Add this JavaScript after your positions array
+
+// Get DOM elements
+const positionNameElement = document.querySelector('.positionName');
+const positionDescriptionElement = document.querySelector('.positionDescription');
+const positionRolesElement = document.querySelector('.positionRoles');
+const placeholderTextElement = document.querySelector('.placeHolderText');
+const roleNameElement = document.querySelector('.roleName');
+
+
+// Function to find position data by position name
+function findPositionData(positionName) {
+    return positions.find(pos => 
+        pos.position.toLowerCase() === positionName.toLowerCase()
+    );
+}
+
+// Function to update the display with position data
+function updatePositionDisplay(positionData) {
+    // Hide placeholder text
+    placeholderTextElement.style.display = 'none';
+    
+    // Update position name and description
+    positionNameElement.textContent = positionData.position;
+    positionDescriptionElement.textContent = positionData.description;
+    
+    // Update roles section title
+    roleNameElement.textContent = `${positionData.position} Roles`;
+    
+    // Clear existing roles
+    positionRolesElement.innerHTML = '';
+    
+    // Add new roles
+    positionData.roles.forEach(role => {
+        const roleItem = document.createElement('li');
+        roleItem.className = 'role';
+        
+        roleItem.innerHTML = `
+            <h5 class="role-title">${role.name}</h5>
+            <section class="roleDescription">
+                <p><strong>Description:</strong> ${role.description}</p>
+                <p><strong>Key Stats:</strong> ${role.stats}</p>
+            </section>
+        `;
+        
+        positionRolesElement.appendChild(roleItem);
+    });
+    
+    // Show all elements (in case they were hidden)
+    positionNameElement.style.display = 'block';
+    positionDescriptionElement.style.display = 'block';
+    roleNameElement.style.display = 'block';
+    positionRolesElement.style.display = 'block';
+}
+
+// Function to reset to initial state
+function resetToInitialState() {
+    placeholderTextElement.style.display = 'none';
+    positionNameElement.textContent = '';
+    positionDescriptionElement.textContent = '';
+    roleNameElement.textContent = '';
+    positionRolesElement.innerHTML = '';
+}
+
+// Add click event listeners to all player circles
+
+const playerGroup = document.querySelector('g.player');
+
+if (playerGroup) {
+  const position = playerGroup.getAttribute('data-position');
+  console.log(position); // "centralMidfielder"
+  playerGroup.addEventListener('click', console.log("player click"))
+}
+
+document.querySelector('.player').forEach(player => {
+    player.addEventListener('click', function() {
+        const positionName = this.getAttribute('data-position');
+        console.log(positionName)
+        // Map SVG position names to your data structure names
+        const positionMap = {
+            'goalkeeper': 'Goalkeeper',
+            'leftBack': 'Fullback',
+            'leftCenterBack': 'Center Back',
+            'rightCenterBack': 'Center Back',
+            'rightBack': 'Fullback',
+            'centralMidfielder': 'Midfielder',
+            'defensiveMidfielder': 'Defensive Midfielder',
+            'striker': 'Striker',
+            'leftWinger': 'Left Winger',
+            'rightWinger': 'Right Winger'
+        };
+        
+        const mappedPositionName = positionMap[positionName];
+        
+        if (mappedPositionName) {
+            const positionData = findPositionData(mappedPositionName);
+            
+            if (positionData) {
+                updatePositionDisplay(positionData);
+               
+                // Optional: Add visual feedback for selected position
+                document.querySelectorAll('.player').forEach(p => {
+                    p.style.opacity = '0.7'; // Dim other players
+                });
+                this.style.opacity = '1'; // Highlight selected player
+            }
+        }
+    });
+});
+
+// Optional: Add keyboard navigation and escape key to reset
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        resetToInitialState();
+        // Reset all player opacities
+        document.querySelectorAll('.player').forEach(player => {
+            player.style.opacity = '1';
+        });
+    }
+});
+
+// Optional: Click outside to reset
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.player') && !event.target.closest('.playerDescription')) {
+        resetToInitialState();
+        document.querySelectorAll('.player').forEach(player => {
+            player.style.opacity = '1';
+        });
+    }
+});

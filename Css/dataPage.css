@@ -1,4 +1,91 @@
 /* Main nav container */
+body {
+    margin: 0;
+    padding-top: 140px; /* Space for fixed nav */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.playerDescription {
+    position: fixed;
+    left: 270px;
+    top: 180px;
+    width: 400px;
+    background: none;
+    border-radius: 10px;
+    padding: 2rem;
+    color: white;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.placeHolderText{
+    text-align: center;
+    position: fixed;
+    left: 225px;
+    top: 300px;
+    width: 400px;
+}
+#PositionHeader {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+    color: white;
+    border-bottom: 0.5px solid white ;
+    padding-bottom: 0.5rem;
+    width:fit-content;
+    text-align: center;
+}
+
+.positionName {
+    font-size: 1.4rem;
+    color: white;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: bold;
+}
+
+.positionDescription {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.rolesContainer {
+    margin-top: 1.5rem;
+}
+
+.roleName {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.positionRoles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.role {
+    background: none;
+    border-left: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.roleDescription {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #555;
+}
+
+
+
+
+
 nav {
     position: fixed;
     top: 0;
@@ -145,5 +232,19 @@ color: white;
 
 .player:hover {
     transform: scale(1); /* This scales both circle and text together */
+}
+
+#instructions {
+    position: fixed;
+    right: 20px;
+    top: 590px; /* Right below the tactics board */
+    width: 600px;
+    text-align: center;
+    color: white;
+    font-style: italic;
+    padding: 10px;
+    background: none;
+    border-radius: 5px;
+    z-index: 100;
 }
 
