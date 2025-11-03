@@ -1,0 +1,109 @@
+/* Main nav container */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    z-index: 1000;
+   
+}
+
+.NavBar {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Top section - Title and Search */
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Center the logo + title */
+.topNav a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#Home {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+}
+
+/* Search container - right side */
+.searchContainer {
+    display: flex;
+    align-items: center;
+     flex-direction: row-reverse;
+    gap: 0.5rem;
+}
+
+.search-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 20px;
+    outline: none;
+}
+
+#searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+}
+
+#searchButton i {
+color: white;
+}
+
+
+/* Navigation menu - sticky section */
+#sticky {
+    width: 100%;
+}
+
+#sticky ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 2rem;
+    background: black;
+}
+
+.navOp a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navOp a:hover {
+    color: red;
+}
+
+.navOp h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
