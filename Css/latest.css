@@ -1,0 +1,144 @@
+/* === Grid container === */
+.opArticlesContainer {
+  display: grid;
+  grid-template-areas:
+    "main main"
+    "small big";
+  grid-template-columns: 1fr 1.15fr; /* right slightly larger */
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* === Assign grid areas === */
+.opArticle {
+    display: flex;
+  flex-direction: row;        /* put image and text next to each other */
+  gap: 1rem;
+  align-items: stretch;
+  color: white;
+  max-width: 1000px; /* limit card width so it can be centered */
+  margin: 0 auto;    /* center the opArticle inside the container */
+}
+
+.featuredArticleSmall {
+  grid-area: small;
+}
+
+.featuredArticlebig {
+  grid-area: big;
+}
+
+/* === Shared card styles === */
+.featuredArticleSmall,
+.featuredArticlebig {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featuredArticleSmall:hover,
+.featuredArticlebig:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Keep hover effect for the main opArticle (which uses row layout) */
+.opArticle:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* === Images === */
+.opThumbnail,
+.smallThumbnail,
+.bigThumbnail {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Image height differences for hierarchy */
+.opThumbnail {
+    width: 380px;              /* fixed thumbnail width so text column can center */
+  height: auto;               /* let height be determined by container */
+  max-height: 420px;         /* optional cap so it doesn't get huge */
+  object-fit: cover;         /* crop to fill without distortion */
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.smallThumbnail {
+  height: 260px;
+}
+
+.bigThumbnail {
+  height: 300px;
+}
+
+/* === Text sections === */
+.opText,
+.smallText,
+.bigText {
+  padding: 1rem;
+  color: white;
+}
+
+.opText {
+  flex: 1 1 auto;             /* take remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* vertically center text next to image */
+  align-items: center;        /* center children horizontally */
+  text-align: center;         /* center text content */
+  color: white;
+}
+
+.opHeadline {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.smallHeadline,
+.bigHeadline {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.opCaption,
+.smallCaption,
+.bigCaption {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  color: white;
+}
+
+/* === Responsive layout === */
+@media (max-width: 900px) {
+  .opArticlesContainer {
+    grid-template-areas:
+      "main"
+      "small"
+      "big";
+    grid-template-columns: 1fr;
+  }
+
+  .opThumbnail {
+    width: 100%;
+    height: 320px;
+  }
+
+  .smallThumbnail,
+  .bigThumbnail {
+    height: 240px;
+  }
+}
