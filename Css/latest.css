@@ -20,6 +20,7 @@
   color: white;
   max-width: 1000px; /* limit card width so it can be centered */
   margin: 0 auto;    /* center the opArticle inside the container */
+   margin-left: 37%;
 }
 
 .featuredArticleSmall {

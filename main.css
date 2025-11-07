@@ -166,3 +166,11 @@ body.nav-combined .topNav {
     font-weight: 600;
 }
 
+.footer {
+    background: none;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
