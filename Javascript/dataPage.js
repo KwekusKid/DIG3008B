@@ -8,17 +8,21 @@ const positions = [
             {
                 name: "False Nine",
                 description: "A striker that drops deep to draw CBs",
-                stats: "HIGH technical ability and hold up"
+                stats: "HIGH technical ability and hold up",
+                example: "Bobby Firmino for Liverpool best season 2018/2019 where he scored 9 goals and provided 7 assists, playing a false nine role for Jurgen Klopp"
             },
             {
                 name: "Poacher",
                 description: "A striker that offers goal threat from smart box presence",
-                stats: "HIGH off the ball movement"
+                stats: "HIGH off the ball movement",
+                example: "Sergio Argueo's 2018/2019 season for Pep Guardiola's Manchester City, where he scored 21 goals in 31 starts."
             },
             {
                 name: "Targetman",
                 description: "A strong presence in the box",
-                stats: "HIGH physicality and athletic ability"
+                stats: "HIGH physicality and athletic ability",
+                example:"Didier Drogba's 2009/2010 season for Chelsea where he scored 29 goals in all competitions, using his strength and aerial ability to dominate defenders."
+
             }
         ]
     },
@@ -29,7 +33,8 @@ const positions = [
             {
                 name: "Playmaker",
                 description: "Creates chances from deep positions",
-                stats: "HIGH passing and vision"
+                stats: "HIGH passing and vision",
+                 
             },
             {
                 name: "Box to Box",
@@ -55,7 +60,8 @@ const positions = [
             {
                 name: "Raumdeuter",
                 description: "Using smart movement, players can become a goal threat",
-                stats: "HIGH off ball movement"
+                stats: "HIGH off ball movement",
+                example: "Thomas Muller during the 2019/2020 season for Bayern Munich, where he scored 8 goals and provided 21 assists, showcasing his ability to find and exploit space effectively."
             },
             {
                 name: "Advanced Playmaker",
@@ -71,12 +77,14 @@ const positions = [
             {
                 name: "The Regista",
                 description: "A deep line playmaker who progresses a teams play through a wide range of passing",
-                stats: "HIGH passing range, can complete any pass at an excellent standard"
+                stats: "HIGH passing range, can complete any pass at an excellent standard",
+                example: "Andrea Pirlo during his time at Juventus, where he orchestrated play from deep positions with his exceptional passing ability."
             },
             {
                 name: "Ball Winner",
                 description: "Aggressive midfielder who breaks up opposition attacks",
-                stats: "HIGH tackling and anticipation"
+                stats: "HIGH tackling and anticipation",
+                example: ""
             },
             {
                 name: "Anchor",
@@ -206,7 +214,7 @@ function updatePositionDisplay(positionData) {
             const roleItem = document.createElement('li');
             roleItem.className = 'role';
 
-            const title = document.createElement('h5');
+            const title = document.createElement('h3');
             title.className = 'role-title';
             title.textContent = role.name;
 
@@ -225,12 +233,29 @@ function updatePositionDisplay(positionData) {
             pStats.appendChild(strongStats);
             pStats.appendChild(document.createTextNode(' ' + (role.stats || '')));
 
+            const pExample = document.createElement('p');
+            const strongExample = document.createElement('strong');
+            strongExample.textContent = 'Example:';
+            pExample.appendChild(strongExample);
+            pExample.appendChild(document.createTextNode(' ' + (role.example || '')));
+
             section.appendChild(pDesc);
             section.appendChild(pStats);
+            section.appendChild(pExample);
 
-            roleItem.appendChild(title);
-            roleItem.appendChild(section);
-            frag.appendChild(roleItem);
+                        roleItem.appendChild(title);
+                        roleItem.appendChild(section);
+
+                        // add click listener directly to the title element before it's appended
+                        title.addEventListener('click', () => {
+                                // collapse any other open roles inside this container
+                                const siblingRoles = positionRolesElement.querySelectorAll('.role');
+                                siblingRoles.forEach(r => { if (r !== roleItem) r.classList.remove('active'); });
+                                // toggle this role
+                                roleItem.classList.toggle('active');
+                        });
+
+                        frag.appendChild(roleItem);
         });
         positionRolesElement.appendChild(frag);
     } else {
@@ -276,10 +301,11 @@ function resetToInitialState() {
              'rightCenterBack': 'Center Back',
              'rightBack': 'Fullback',
             'centralMidfielder': 'Midfielder',
+            'attackingMidfielder': 'Attacking Midfielder',
              'defensiveMidfielder': 'Defensive Midfielder',
              'striker': 'Striker',
-            'leftWinger': 'Left Winger',
-             'rightWinger': 'Right Winger'
+            'leftWinger': 'Winger',
+             'rightWinger': 'Winger'
          };
 
          const descriptionMap = {

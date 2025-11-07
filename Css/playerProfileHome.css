@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;          /* Full viewport height */
+  width: 100vw;           /* Full viewport width */
+  overflow: hidden;       /* Prevent scrollbars */
+}
+
+svg {
+  width: 95vw;            /* Almost full width */
+  height: 90vh;           /* Almost full height */
+  max-width: 1600px;      /* Optional: prevent stretching too wide */
+  max-height: 900px;      /* Optional: maintain ratio */
+}
+
+.pitch {
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+}
+
+.player {
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.player:hover {
+  fill: white;
+  stroke: black;
+}
+
+.player-text {
+  fill: white;
+  font-size: 1rem;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}

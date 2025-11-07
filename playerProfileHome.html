@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Call</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./Css/playerProfileHome.css">
+    
+</head>
+<body>
+     <nav>
+        <ul nav class="NavBar">
+            <div class="topNav">
+                <a href="index.html">
+                    <h2 id="Home">
+                        ROLE CALL
+                        <img src="Images/logo.png" alt="logo for the website Role Call" class="logo">
+                    </h2>
+
+                </a>
+
+                <div class="searchContainer">
+                    <button id="searchButton">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <div id="searchBar">
+                        </div>
+                    </button>
+
+                    <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+                </div>
+            </div>
+
+
+
+
+            <div id="sticky">
+                <ul>
+                    <li class="navOp">
+                        <a href="dataPage.html">
+                            <h2>
+                                Data and Stats
+                            </h2>
+                        </a>
+                    </li>
+                    <li class="navOp">
+                        <a href="playerProfileHome.html">
+                            <h2>
+                                Player Profiles
+                            </h2>
+                        </a>
+                    </li>
+                    <li class="navOp">
+                        <a href="latest.html">
+                            <h2>
+                                The Latest
+                            </h2>
+                        </a>
+                    </li>
+                    <li class="navOp">
+                        <a href="about.html">
+                            <h2>
+                                About
+                            </h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ul>
+
+
+    </nav>
+
+  <svg viewBox="0 0 1000 600">
+  <!-- Pitch Outline -->
+  <rect x="50" y="50" width="900" height="500" class="pitch" />
+  
+  <!-- Goal Area -->
+  <rect x="400" y="50" width="200" height="60" class="pitch" />
+  <rect x="400" y="490" width="200" height="60" class="pitch" />
+
+  <!-- Center Line + Circle -->
+  <line x1="500" y1="50" x2="500" y2="550" class="pitch" />
+  <circle cx="500" cy="300" r="60" class="pitch" />
+  <circle cx="500" cy="300" r="6" fill="white" />
+
+  <!-- Player Circles -->
+  <!-- GK -->
+  <g class="player" onclick="openMenu(1)">
+    <circle cx="500" cy="520" r="20" />
+    <text x="500" y="520" class="player-text">1</text>
+    <title>Goalkeeper</title>
+  </g>
+
+  <!-- Back Line -->
+  <g class="player" onclick="openMenu(2)">
+    <circle cx="800" cy="430" r="20" />
+    <text x="800" y="430" class="player-text">2</text>
+    <title>Right back</title>
+  </g>
+  <g class="player" onclick="openMenu(3)">
+    <circle cx="200" cy="430" r="20" />
+    <text x="200" y="430" class="player-text">3</text>
+    <title>Left Back</title>
+  </g>
+  <g class="player" onclick="openMenu(4)">
+    <circle cx="380" cy="430" r="20" />
+    <text x="380" y="430" class="player-text">4</text>
+    <title>Right Center Back</title>
+  </g>
+  <g class="player" onclick="openMenu(5)">
+    <circle cx="620" cy="430" r="20" />
+    <text x="620" y="430" class="player-text">5</text>
+    <title>Left Center Back</title>
+  </g>
+
+  <!-- Midfield -->
+  <g class="player" onclick="openMenu(6)">
+    <circle cx="500" cy="340" r="20" />
+    <text x="500" y="340" class="player-text">6</text>
+    <title>Defensive Midfielder</title>
+  </g>
+  <g class="player" onclick="openMenu(8)">
+    <circle cx="600" cy="280" r="20" />
+    <text x="600" y="280" class="player-text">8</text>
+    <title>Midfielder</title>
+  </g>
+  <g class="player" onclick="openMenu(10)">
+    <circle cx="400" cy="280" r="20" />
+    <text x="400" y="280" class="player-text">10</text>
+    <title>Attacking Midfielder</title>
+  </g>
+
+  <!-- Forwards -->
+  <g class="player" onclick="openMenu(7)">
+    <circle cx="300" cy="160" r="20" />
+    <text x="300" y="160" class="player-text">7</text>
+    <title>Left Winger</title>
+  </g>
+  <g class="player" onclick="openMenu(9)">
+    <circle cx="500" cy="130" r="20" />
+    <text x="500" y="130" class="player-text">9</text>
+     <title>Striker</title>
+  </g>
+  <g class="player" onclick="openMenu(11)">
+    <circle cx="700" cy="160" r="20" />
+    <text x="700" y="160" class="player-text">11</text>
+     <title>Right Winger</title>
+  </g>
+</svg>
+</body>
+</html>
