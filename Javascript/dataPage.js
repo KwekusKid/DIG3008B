@@ -1,5 +1,5 @@
-npm init playwright@latest
 
+document.addEventListener("DOMContentLoaded", function (){
 const positions = [
     {
         position: "Striker",
@@ -189,30 +189,53 @@ function updatePositionDisplay(positionData) {
     placeholderTextElement.style.display = 'none';
     
     // Update position name and description
-    positionNameElement.textContent = positionData.position;
-    positionDescriptionElement.textContent = positionData.description;
+    if (positionNameElement) positionNameElement.textContent = positionData.position;
+    // debug: log the description element and the incoming description
+    console.log('updatePositionDisplay - description element:', positionDescriptionElement);
+    console.log('updatePositionDisplay - incoming description:', positionData && positionData.description);
+    if (positionDescriptionElement) positionDescriptionElement.textContent = positionData.description;
     
     // Update roles section title
-    roleNameElement.textContent = `${positionData.position} Roles`;
-    
-    // Clear existing roles
-    positionRolesElement.innerHTML = '';
-    
-    // Add new roles
-    positionData.roles.forEach(role => {
-        const roleItem = document.createElement('li');
-        roleItem.className = 'role';
-        
-        roleItem.innerHTML = `
-            <h5 class="role-title">${role.name}</h5>
-            <section class="roleDescription">
-                <p><strong>Description:</strong> ${role.description}</p>
-                <p><strong>Key Stats:</strong> ${role.stats}</p>
-            </section>
-        `;
-        
-        positionRolesElement.appendChild(roleItem);
-    });
+    if (roleNameElement) roleNameElement.textContent = `Roles`;
+
+    // Clear existing roles and rebuild safely
+    if (positionRolesElement) {
+        positionRolesElement.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        (positionData.roles || []).forEach(role => {
+            const roleItem = document.createElement('li');
+            roleItem.className = 'role';
+
+            const title = document.createElement('h5');
+            title.className = 'role-title';
+            title.textContent = role.name;
+
+            const section = document.createElement('section');
+            section.className = 'roleDescription';
+
+            const pDesc = document.createElement('p');
+            const strongDesc = document.createElement('strong');
+            strongDesc.textContent = 'Description:';
+            pDesc.appendChild(strongDesc);
+            pDesc.appendChild(document.createTextNode(' ' + (role.description || '')));
+
+            const pStats = document.createElement('p');
+            const strongStats = document.createElement('strong');
+            strongStats.textContent = 'Key Stats:';
+            pStats.appendChild(strongStats);
+            pStats.appendChild(document.createTextNode(' ' + (role.stats || '')));
+
+            section.appendChild(pDesc);
+            section.appendChild(pStats);
+
+            roleItem.appendChild(title);
+            roleItem.appendChild(section);
+            frag.appendChild(roleItem);
+        });
+        positionRolesElement.appendChild(frag);
+    } else {
+        console.warn('positionRolesElement not found, cannot render roles');
+    }
     
     // Show all elements (in case they were hidden)
     positionNameElement.style.display = 'block';
@@ -232,49 +255,92 @@ function resetToInitialState() {
 
 // Add click event listeners to all player circles
 
-const playerGroup = document.querySelector('g.player');
 
-if (playerGroup) {
-  const position = playerGroup.getAttribute('data-position');
-  console.log(position); // "centralMidfielder"
-  playerGroup.addEventListener('click', console.log("player click"))
-}
+    // include SVG groups and regular elements
+    const players = document.querySelectorAll('g.player, .player');
+    
+    console.log(`Found ${players.length} players (searched "g.player, .player")`);
 
-document.querySelector('.player').forEach(player => {
-    player.addEventListener('click', function() {
-        const positionName = this.getAttribute('data-position');
-        console.log(positionName)
-        // Map SVG position names to your data structure names
-        const positionMap = {
-            'goalkeeper': 'Goalkeeper',
-            'leftBack': 'Fullback',
-            'leftCenterBack': 'Center Back',
-            'rightCenterBack': 'Center Back',
-            'rightBack': 'Fullback',
+    players.forEach(player => {
+        const position = player.getAttribute('data-position') || '';
+
+  
+        player.addEventListener('click', function(event){
+            event.stopPropagation(); // prevent outside-click reset
+            console.log(`Player position: ${position}`);
+
+               const positionMap = {
+             'goalkeeper': 'Goalkeeper',
+             'leftBack': 'Fullback',
+             'leftCenterBack': 'Center Back',
+             'rightCenterBack': 'Center Back',
+             'rightBack': 'Fullback',
             'centralMidfielder': 'Midfielder',
-            'defensiveMidfielder': 'Defensive Midfielder',
-            'striker': 'Striker',
+             'defensiveMidfielder': 'Defensive Midfielder',
+             'striker': 'Striker',
             'leftWinger': 'Left Winger',
-            'rightWinger': 'Right Winger'
-        };
-        
-        const mappedPositionName = positionMap[positionName];
-        
-        if (mappedPositionName) {
-            const positionData = findPositionData(mappedPositionName);
+             'rightWinger': 'Right Winger'
+         };
+
+         const descriptionMap = {
             
-            if (positionData) {
-                updatePositionDisplay(positionData);
+
+         }
+            const mappedPositionName = positionMap[position];
+        
+         if (mappedPositionName) {
+             const positionData = findPositionData(mappedPositionName);
+            
+             if (positionData) {
+                 updatePositionDisplay(positionData);
                
-                // Optional: Add visual feedback for selected position
-                document.querySelectorAll('.player').forEach(p => {
-                    p.style.opacity = '0.7'; // Dim other players
-                });
-                this.style.opacity = '1'; // Highlight selected player
-            }
-        }
+                 // Optional: Add visual feedback for selected position (include SVG <g> elements)
+                 document.querySelectorAll('g.player, .player').forEach(p => {
+                     p.style.opacity = '0.7'; // Dim other players
+                 });
+                 this.style.opacity = '1'; // Highlight selected player
+             }
+         }
+     });
+        });
     });
-});
+
+
+// position.forEach(player => {
+//     player.addEventListener('click', function() {
+//         const positionName = this.getAttribute('data-position');
+//         console.log(positionName)
+//         // Map SVG position names to your data structure names
+//         const positionMap = {
+//             'goalkeeper': 'Goalkeeper',
+//             'leftBack': 'Fullback',
+//             'leftCenterBack': 'Center Back',
+//             'rightCenterBack': 'Center Back',
+//             'rightBack': 'Fullback',
+//             'centralMidfielder': 'Midfielder',
+//             'defensiveMidfielder': 'Defensive Midfielder',
+//             'striker': 'Striker',
+//             'leftWinger': 'Winger',
+//             'rightWinger': 'Winger'
+//         };
+        
+//         const mappedPositionName = positionMap[positionName];
+        
+//         if (mappedPositionName) {
+//             const positionData = findPositionData(mappedPositionName);
+            
+//             if (positionData) {
+//                 updatePositionDisplay(positionData);
+               
+//                 // Optional: Add visual feedback for selected position
+//                 document.querySelectorAll('.player').forEach(p => {
+//                     p.style.opacity = '0.7'; // Dim other players
+//                 });
+//                 this.style.opacity = '1'; // Highlight selected player
+//             }
+//         }
+//     });
+// });
 
 // Optional: Add keyboard navigation and escape key to reset
 document.addEventListener('keydown', function(event) {
@@ -285,7 +351,7 @@ document.addEventListener('keydown', function(event) {
             player.style.opacity = '1';
         });
     }
-});
+
 
 // Optional: Click outside to reset
 document.addEventListener('click', function(event) {
@@ -295,4 +361,5 @@ document.addEventListener('click', function(event) {
             player.style.opacity = '1';
         });
     }
+});
 });

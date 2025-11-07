@@ -7,99 +7,110 @@
     <title>Role Call</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
     <script src="https://kit.fontawesome.com/bf38fba464.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul nav class="NavBar">
-                <div class="topNav">
-                    <a href="index.html">
-                        <h2 id="Home">
-                            ROLE CALL
-                            <img src = "Images/logo.png" alt= "logo for the website Role Call" class="logo">
-                        </h2>
-                        
-                    </a>
-
-                    <div class="searchContainer">
-                        <button id="searchButton">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <div id="searchBar">
-                            </div>
-                        </button>
-
-                        <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
-                    </div>
-                </div>
-
-
-
-
-
-
-                <div id="sticky">
-                    <ul>
-                        <li class="navOp">
-                            <a href="dataPage.html">
-                                <h2>
-                                    Data and Stats
-                                </h2>
-                            </a>
-                        </li>
-                        <li class="navOp">
-                            <a href="playerProfileHome.html">
-                                <h2>
-                                    Player Profiles
-                                </h2>
-                            </a>
-                        </li>
-                        <li class="navOp">
-                            <a href="latest.html">
-                                <h2>
-                                    The Latest
-                                </h2>
-                            </a>
-                        </li>
-                        <li class="navOp">
-                            <a href="about.html">
-                                <h2>
-                                    About
-                                </h2>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </ul>
-
-
-        </nav>
-    </header>
-
-    <div class="opContainer">
-        <section class="opCard">
-            <a href="Articles/article1.html" class="linkToArticle">
-                <section class="opText">
-                    <h2>
-                        h
+    <!-- Top Navigation -->
+     <nav>
+        <div class="NavBar">
+            <div class="topNav">
+                <a href="index.html">
+                    <h2 id="Home">
+                        ROLE CALL
+                        <img src="Images/logo.png" alt="logo for the website Role Call" class="logo">
                     </h2>
-                    <div class="opSummary p-summary">
-                        rgjeinodbnnietnibn kd
-                    </div>
-                </section>
-            </a>
-        </section>
-        <div class="opCard">
-            helo
+                </a>
+                <div class="searchContainer">
+                    <button id="searchButton">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+                </div>
+            </div>
+
+            <div id="sticky">
+                <ul>
+                    <li class="navOp"><a href="dataPage.html"><h2>Data and Stats</h2></a></li>
+                    <li class="navOp"><a href="playerProfileHome.html"><h2>Player Profiles</h2></a></li>
+                    <li class="navOp"><a href="latest.html"><h2>The Latest</h2></a></li>
+                    <li class="navOp"><a href="about.html"><h2>About</h2></a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-    </div>
+    <main class="main-content">
+        <!-- Opening Article -->
+        <section class="opening-article">
+            <div class="opContainer">
+                <div class="opCard">
+                    <div class="article-image">
+                        <!-- Your article image here -->
+                    </div>
+                </div>
+                <div class="opCard">
+                    <a href="Articles/article1.html" class="linkToArticle">
+                        <section class="opText">
+                            <h2 class="article-headline">Your Main Article Headline</h2>
+                            <div class="opSummary p-summary">
+                                Brief summary or introduction to the article goes here...
+                            </div>
+                        </section>
+                    </a>
+                </div>
+            </div>
+        </section>
 
+        <!-- Featured Articles -->
+        <section class="featured-articles">
+            <div class="section-header">
+                <div class="border-line top-line"></div>
+                <h3 class="section-title">Featured Articles</h3>
+                <div class="border-line bottom-line"></div>
+            </div>
+            
+            <section class="articleContainer">
+                <ul>
+                    <li class="articleCard">
+                        <a href="#">
+                            <section class="articleText">
+                                <h2 class="articleTitle">Article Title 1</h2>
+                                <p class="articleCaption">Article description goes here...</p>
+                            </section>
+                        </a>
+                    </li>
+                    <li class="articleCard">
+                        <a href="#">
+                            <section class="articleText">
+                                <h2 class="articleTitle">Article Title 2</h2>
+                                <p class="articleCaption">Article description goes here...</p>
+                            </section>
+                        </a>
+                    </li>
+                    <li class="articleCard">
+                        <a href="#">
+                            <section class="articleText">
+                                <h2 class="articleTitle">Article Title 3</h2>
+                                <p class="articleCaption">Article description goes here...</p>
+                            </section>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="articleNavigation">
+                    <button class="navDot active"></button>
+                    <button class="navDot"></button>
+                    <button class="navDot"></button>
+                </div>
+            </section>
+        </section>
+    </main>
 
-
-
-
+    <footer class="footer">
+        <p class="copyright">Apayin Bogolo Odame-Takyi (2025). All Rights Reserved.</p>
+    </footer>
 </body>
 
 </html>
