@@ -140,8 +140,8 @@ const positions = [
                 stats: "HIGH shooting and dribbling"
             },
             {
-                name: "Wide Playmaker",
-                description: "Creates chances from wide areas with passing",
+                name: "Traditional Winger",
+                description: "Creates chances from wide areas with crossing",
                 stats: "HIGH crossing and vision"
             },
             {

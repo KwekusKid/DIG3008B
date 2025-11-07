@@ -17,6 +17,7 @@ svg {
 }
 
 .pitch {
+
   fill: none;
   stroke: white;
   stroke-width: 2;
@@ -42,3 +43,27 @@ svg {
   dominant-baseline: middle;
   pointer-events: none;
 }
+
+ /* Slide-out panel */
+    .info-panel {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      background-color: #80808099; /* grey with opacity */;
+      color: white;
+      height: 100%;
+      transition: all 0.4s ease;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .info-panel.active {
+      width: 25vw;
+      opacity: 1;
+    }
+
+    /* Shift container when panel is open */
+    .container.shifted {
+      margin-left: -10vw;
+      width: 85vw;
+    }
