@@ -52,7 +52,12 @@ class NavigationManager {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    new NavigationManager();
+    // Only create the non-GSAP NavigationManager if GSAP isn't available.
+    if (typeof gsap === 'undefined') {
+        new NavigationManager();
+    } else {
+        console.log('GSAP detected — using GSAP NavigationManager (main.js)');
+    }
     
     // Your existing article carousel code
     const articleContainer = document.querySelector('.articleContainer');

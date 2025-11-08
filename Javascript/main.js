@@ -113,5 +113,13 @@ document.addEventListener("DOMContentLoaded", function (){class NavigationManage
             clearTimeout(this.scrollTimeout);
         }
     }
-}});
+}
+
+    // instantiate GSAP-powered navigation manager so it actually runs
+    try {
+        new NavigationManager();
+    } catch (err) {
+        console.error('Failed to initialize GSAP NavigationManager:', err);
+    }
+});
     
