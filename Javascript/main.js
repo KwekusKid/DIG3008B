@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", function (){
             const li = document.createElement('li');
             li.className = 'navOp';
             const a = document.createElement('a');
-            a.href = it.href;
+            // Use pathPrefix so links work from pages in subfolders (e.g., Articles/)
+            a.href = pathPrefix + it.href;
             const h = document.createElement('h2');
             h.textContent = it.label;
             a.appendChild(h);
