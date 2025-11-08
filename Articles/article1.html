@@ -4,46 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <title>Article 1</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://kit.fontawesome.com/bf38fba464.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../main.css">
+   <link rel="stylesheet" href="articles.css">
+   <script src="../Javascript/main.js"></script>
+    <title>Articles</title>
 </head>
 
 <body>
-    <header>
-        <ul nav class="NavBar">
-            <a href="../index.html">
-                <h2 id="home">
-                    ROLE CALL
-                </h2>
-            </a>
-            <a href="../dataPage.html">
-                <h2>
-                    Data and Stats
-                </h2>
-            </a>
-            <a href = "../playerProfileHome.html">
-                <h2>
-                    Player Profiles
-                </h2>
-            </a>
+    
+         <nav></nav>         
+    
+<main class="page" role="main">
+    <!-- main article column -->
+    <article class="article-col" aria-labelledby="article-title">
 
-            <a href = "../latest.html">
-                <h2>
-                    The Latest
-                </h2>
-            </a>
+      <div class="kicker">News / Fault Lines</div>
 
-            <a href = "../about.html">
-                <h2>
-                    About
-                </h2>
-            </a>
+      <h1 id="article-title" class="headline">Cathedral of Comebacks</h1>
 
+      <div class="byline">
+        <span class="author">By Jane Example</span>
+        <time datetime="2025-11-07">November 7, 2025</time>
+        <span class="muted"> • 8 minute read</span>
+      </div>
 
+      <div class="hero" role="img" aria-label="Liverpool FC Players Celebrating">
+        <img src="../Images/Liverpool.avif" alt="Liverpool players celebrating on the pitch">
+        <div class="hero-credit caption">Photograph: John Doe / Getty</div>
+      </div>
+
+      <section class="article-body">
+        <p>
+          The first paragraph begins here — the opening line is long and descriptive so you can see the drop-cap style applied to the first letter. This paragraph introduces the subject and sets a tone similar to a long-form magazine feature.
+        </p>
+
+        <p>
+          Subsequent paragraphs use a narrower measure that increases readability. Keep sentences and paragraphs concise. The CSS above keeps the column width around 68ch so reading speed and line breaks feel comfortable.
+        </p>
+
+        <blockquote class="pull-quote">
+          “A vivid pull-quote that highlights an important sentence or idea from the article.”
+        </blockquote>
+
+        <p>
+          More body text here. You can include inline <em>italics</em> and <strong>strong</strong> text. Add images and figures as appropriate. When the viewport is narrow, the right rail hides and the article column becomes full-width for mobile readability.
+        </p>
+
+        <figure>
+          <img src="../Images/smaller-photo.avif" alt="Another scene" style="width:100%;height:auto;border-radius:2px;">
+          <figcaption>Figure 1. A supporting image with a caption describing what is shown.</figcaption>
+        </figure>
+
+        <p>Final paragraph — closing the piece with a small reflection and a byline block if you wish.</p>
+      </section>
+    </article>
+
+    <aside class="rail" aria-label="Article tools">
+      <div class="share-buttons" aria-hidden="false">
+        <button onclick="navigator.share ? navigator.share({title:document.title,url:location.href}) : alert('Use copy link')">Share</button>
+        <button onclick="copyUrl()">Copy Link</button>
+        <button>Save</button>
+      </div>
+
+      <div style="margin-top:18px; font-size:0.95rem; color:var(--muted)">
+        Related
+        <ul style="padding-left:16px; margin-top:8px;">
+          <li><a href="#" style="color:inherit; text-decoration:none;">How analytics changed the game</a></li>
+          <li><a href="#" style="color:inherit; text-decoration:none;">The new rules</a></li>
         </ul>
+      </div>
+    </aside>
+  </main>
 
 
-    </header>
+
 </body>
 
 </html>

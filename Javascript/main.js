@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (){
 
     // Build the site navigation dynamically so pages only need a <nav></nav> container.
     function buildNav() {
+        console.log('[nav] buildNav start');
         const nav = document.querySelector('nav');
         if (!nav) return;
 
@@ -20,10 +21,12 @@ document.addEventListener("DOMContentLoaded", function (){
         const h2 = document.createElement('h2');
         h2.id = 'Home';
         h2.textContent = 'ROLE CALL';
-        const logo = document.createElement('img');
-        logo.className = 'logo';
-        logo.src = 'Images/logo.png';
-        logo.alt = 'logo for the website Role Call';
+    const logo = document.createElement('img');
+    logo.className = 'logo';
+    // Compute a small prefix so images resolve correctly from pages in subfolders
+    const pathPrefix = (window.location.pathname.includes('/Articles/') || window.location.pathname.includes('/Portfolio/') ) ? '../' : '';
+    logo.src = pathPrefix + 'Images/logo.png';
+    logo.alt = 'logo for the website Role Call';
         h2.appendChild(logo);
         homeLink.appendChild(h2);
 
@@ -76,10 +79,33 @@ document.addEventListener("DOMContentLoaded", function (){
 
         navBar.appendChild(topNav);
         navBar.appendChild(sticky);
-        nav.appendChild(navBar);
+    nav.appendChild(navBar);
+    console.log('[nav] built navBar, sticky exists?', !!document.getElementById('sticky'));
+
+        // Ensure page content doesn't sit underneath the fixed nav: set body padding-top
+        // Use requestAnimationFrame so layout is measured after insertion
+        requestAnimationFrame(() => {
+            try {
+                const navHeight = navBar.getBoundingClientRect().height || 140;
+                document.body.style.paddingTop = navHeight + 'px';
+                console.log('[nav] navHeight set to', navHeight);
+            } catch (e) {
+                // ignore
+            }
+        });
 
         // Add a small click handler for the search button to focus the input
         searchButton.addEventListener('click', () => searchInput.focus());
+
+        // Friendly fallback for the search icon if Font Awesome isn't loaded on this page
+        // (some pages include the kit; others may not). If no font icon appears, show a plain emoji.
+        requestAnimationFrame(() => {
+            const faCheck = document.querySelector('.fa-solid.fa-magnifying-glass');
+            if (!faCheck) {
+                // replace empty icon with emoji
+                searchButton.textContent = '🔍';
+            }
+        });
     }
 
     // build nav first
@@ -113,6 +139,7 @@ class NavigationManager {
         window.addEventListener('scroll', this.handleScroll.bind(this));
         
         console.log('Navigation Manager initialized with GSAP');
+        console.log('[nav] bottomNav element:', this.bottomNav);
     }
     
     handleScroll() {

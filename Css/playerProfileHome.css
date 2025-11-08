@@ -53,7 +53,7 @@ svg {
   height: calc(100vh - 180px);
   /* lower background opacity but keep text fully opaque by using RGBA */
   background: rgba(100,100,100,0.6); /* 60% opacity */
-  color: white;
+  color: var(--textColour);
   overflow: hidden;
   padding: 1rem;
   box-sizing: border-box;
@@ -75,7 +75,7 @@ svg {
   right: 8px;
   background: transparent;
   border: none;
-  color: white;
+  color: var(--textColour);
   font-size: 1.4rem;
   cursor: pointer;
 }
@@ -97,7 +97,7 @@ svg.shifted {
   border-radius: 4px;
   text-align: center;
   font-weight: 700; /* make the header bold */
-  color: white;
+  color: var(--textColour);
   box-sizing: border-box;
 }
 

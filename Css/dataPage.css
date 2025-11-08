@@ -15,7 +15,7 @@ body {
     background: none;
     border-radius: 10px;
     padding: 2rem;
-    color: white;
+    color: var(--textColour);
     z-index: 100;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -31,8 +31,8 @@ body {
 #PositionHeader {
     margin: 0 0 1rem 0;
     font-size: 1.8rem;
-    color: white;
-    border-bottom: 0.5px solid white ;
+    color: var(--textColour);
+    border-bottom: 0.5px solid var(--textColour) ;
     padding-bottom: 0.5rem;
     width:fit-content;
     text-align: center;
@@ -41,7 +41,7 @@ body {
 
 .positionName {
     font-size: 1.4rem;
-    color: white;
+    color: var(--textColour);
     margin: 1rem 0 0.5rem 0;
     font-weight: bold;
     text-align: center;
@@ -50,7 +50,7 @@ body {
 .positionDescription {
     font-size: 1rem;
     line-height: 1.5;
-    color: white;
+    color: var(--textColour);
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -61,7 +61,7 @@ body {
 
 .roleName {
     font-size: 1.2rem;
-    color: white;
+    color: var(--textColour);
     margin-bottom: 1rem;
     font-weight: bold;
     text-align: center;
@@ -85,13 +85,13 @@ body {
 .roleDescription {
     font-size: 0.95rem;
     line-height: 1.4;
-    color: white;
+    color: var(--textColour);
     text-align: center;
 }
 
 .role-title {
   background: #444;
-  color: white;
+    color: var(--textColour);
   padding: 0.6rem 1rem;
   border-radius: 20px;
   display: inline-block;
@@ -125,7 +125,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    background: black;
+    background: var(--bgColour);
     z-index: 1000;
    
 }
@@ -158,7 +158,7 @@ nav {
 #Home {
     margin: 0;
     font-size: 1.5rem;
-    color: white;
+    color: var(--textColour);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -189,11 +189,11 @@ nav {
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    color: white;
+    color: var(--textColour);
 }
 
 #searchButton i {
-color: white;
+color: var(--textColour);
 }
 
 
@@ -209,12 +209,12 @@ color: white;
     list-style: none;
     margin: 0;
     padding: 1rem 2rem;
-    background: black;
+    background: var(--bgColour);
 }
 
 .navOp a {
     text-decoration: none;
-    color: white;
+    color: var(--textColour);
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -245,7 +245,7 @@ color: white;
 .pitch {
     width: 100%;
     height: 100%;
-    border: 2px solid white;
+    border: 2px solid var(--textColour);
     border-radius: 5px;
 }
 
@@ -274,7 +274,7 @@ color: white;
     top: 590px; /* Right below the tactics board */
     width: 600px;
     text-align: center;
-    color: white;
+    color: var(--textColour);
     font-style: italic;
     padding: 10px;
     background: none;

@@ -6,7 +6,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    background: black;
+    background: var(--bgColour);
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -70,7 +70,7 @@ body.nav-combined .topNav {
 #Home {
     margin: 0;
     font-size: 1.5rem;
-    color: white;
+    color: var(--textColour);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -95,7 +95,7 @@ body.nav-combined .topNav {
     border-radius: 20px;
     outline: none;
     background: #222;
-    color: white;
+    color: var(--textColour);
 }
 
 #searchButton {
@@ -103,12 +103,12 @@ body.nav-combined .topNav {
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    color: white;
+    color: var(--textColour);
 }
 
 .navOp a {
     text-decoration: none;
-    color: white;
+    color: var(--textColour);
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -153,13 +153,13 @@ body.nav-combined .topNav {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    color: white;
+    color: var(--textColour);
 }
 
 .opSummary {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: white;
+    color: var(--textColour);
 }
 
 /* Featured Articles Section */
@@ -178,13 +178,13 @@ body.nav-combined .topNav {
     margin: 1rem 0;
     font-weight: 300;
     letter-spacing: 1px;
-    color: white;
+    color: var(--textColour);
     font-style: italic;
 }
 
 .border-line {
     height: 1px;
-    background: white;
+    background: var(--bgColour);
     margin: 0 auto;
     width: 200px;
 }
@@ -235,13 +235,13 @@ body.nav-combined .topNav {
     font-size: 1.25rem;
     font-weight: bold;
     margin: 0 0 1rem 0;
-    color: white;
+    color: var(--textColour);
     line-height: 1.3;
 }
 
 .articleCaption {
     font-size: 0.9rem;
-    color: white;
+    color: var(--textColour);
     line-height: 1.5;
     margin: 0;
     
@@ -276,7 +276,7 @@ body.nav-combined .topNav {
 /* Footer */
 .footer {
     background: none;
-    color: white;
+    color: var(--textColour);
     padding: 2rem;
     text-align: center;
     margin-top: 4rem;
@@ -323,13 +323,13 @@ body.nav-combined .topNav {
     font-size: 1.1rem;
     font-weight: bold;
     margin: 0 0 1rem 0;
-    color: white;
+    color: var(--textColour);
     line-height: 1.3;
 }   
 
 .playerStats {
     font-size: 0.9rem;
-    color: white;
+    color: var(--textColour);
     line-height: 1.5;
     margin: 0;
 }
