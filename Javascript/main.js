@@ -1,4 +1,91 @@
-document.addEventListener("DOMContentLoaded", function (){class NavigationManager {
+document.addEventListener("DOMContentLoaded", function (){
+
+    // Build the site navigation dynamically so pages only need a <nav></nav> container.
+    function buildNav() {
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+
+        // Clear existing content
+        nav.innerHTML = '';
+
+        const navBar = document.createElement('div');
+        navBar.className = 'NavBar';
+
+        // topNav
+        const topNav = document.createElement('div');
+        topNav.className = 'topNav';
+
+        const homeLink = document.createElement('a');
+        homeLink.href = 'index.html';
+        const h2 = document.createElement('h2');
+        h2.id = 'Home';
+        h2.textContent = 'ROLE CALL';
+        const logo = document.createElement('img');
+        logo.className = 'logo';
+        logo.src = 'Images/logo.png';
+        logo.alt = 'logo for the website Role Call';
+        h2.appendChild(logo);
+        homeLink.appendChild(h2);
+
+        // search container
+        const searchContainer = document.createElement('div');
+        searchContainer.className = 'searchContainer';
+
+        const searchButton = document.createElement('button');
+        searchButton.id = 'searchButton';
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-magnifying-glass';
+        searchButton.appendChild(icon);
+
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.className = 'search-input';
+        searchInput.placeholder = 'Search...';
+        searchInput.setAttribute('aria-label', 'Search');
+
+        searchContainer.appendChild(searchButton);
+        searchContainer.appendChild(searchInput);
+
+        topNav.appendChild(homeLink);
+        topNav.appendChild(searchContainer);
+
+        // sticky nav (second half)
+        const sticky = document.createElement('div');
+        sticky.id = 'sticky';
+
+        const ul = document.createElement('ul');
+        const items = [
+            { href: 'dataPage.html', label: 'Data and Stats' },
+            { href: 'playerProfileHome.html', label: 'Player Profiles' },
+            { href: 'latest.html', label: 'The Latest' },
+            { href: 'about.html', label: 'About' }
+        ];
+        items.forEach(it => {
+            const li = document.createElement('li');
+            li.className = 'navOp';
+            const a = document.createElement('a');
+            a.href = it.href;
+            const h = document.createElement('h2');
+            h.textContent = it.label;
+            a.appendChild(h);
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+
+        sticky.appendChild(ul);
+
+        navBar.appendChild(topNav);
+        navBar.appendChild(sticky);
+        nav.appendChild(navBar);
+
+        // Add a small click handler for the search button to focus the input
+        searchButton.addEventListener('click', () => searchInput.focus());
+    }
+
+    // build nav first
+    buildNav();
+
+class NavigationManager {
     constructor() {
         this.bottomNav = document.getElementById('sticky');
         this.lastScrollY = window.scrollY;
