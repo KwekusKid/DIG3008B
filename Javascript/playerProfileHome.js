@@ -1,4 +1,6 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+
     const roleDes = [
         {
             position: "Goalkeeper",
@@ -42,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             roles: [
                 {
                     name: "Inverted Full Back",
-                    description: "A Full Back that is excellent at contributing to the attack, often delivering crosses into the box."
+                    description: "A Full Back that moves centrally to support and overload the midfield for their team."
                 },
 
                 {
@@ -97,10 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     name: "Advanced Playmaker",
                     description: "A player who uses there excellent vision and passing ability to create scoring opportunities for their team."
                 },
-                {
-                    name: "Shadow Striker",
-                    description: "A player who uses there excellent attacking instincts to score goals."
-                },
 
                 {
                     name: "Raumdeuter",
@@ -133,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
             description: "Strikers are the primary goal scorers for the team. They are responsible for finishing scoring opportunities and leading the attacking line.",
             roles: [
                 {
-                    name:"Poacher",
+                    name: "Poacher",
                     description: "A Striker that is excellent at scoring goals from smart movement in the box."
                 },
                 {
@@ -149,15 +147,102 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ]
     const panel = document.getElementById("infoPanel");
-    const container = document.getElementById("mainContainer");
     const details = document.getElementById("playerDetails");
+    const positionEl = document.getElementById("positionDescription");
+    const closeBtn = document.getElementById('closePanel');
+    const svg = document.querySelector('svg');
 
-    function openMenu(playerNumber) {
-      panel.classList.add("active");
-      container.classList.add("shifted");
-      details.textContent = "Information about player " + playerNumber;
+    // Open the side panel and shift the SVG left
+    function openMenu(idOrName) {
+
+        // idOrName may be a player number (1..11) or a position name string.
+        let positionData = null;
+
+        // If it's a number (or numeric string), try mapping player number -> position name
+        const num = Number(idOrName);
+        if (!Number.isNaN(num) && Number.isInteger(num)) {
+            const mapping = {
+                1: "Goalkeeper",
+                2: "Full Back",
+                3: "Full Back",
+                4: "Center Back",
+                5: "Center Back",
+                6: "Defensive Midfielder",
+                7: "Winger",
+                8: "Midfielder",
+                9: "Striker",
+                10: "Attacking Midfielder",
+                11: "Winger"
+            };
+            const posName = mapping[num];
+            if (posName) positionData = roleDes.find(r => r.position.toLowerCase() === posName.toLowerCase());
+        } else {
+            // treat as a position name string
+            const name = String(idOrName || '').trim();
+            if (name) positionData = roleDes.find(r => r.position.toLowerCase() === name.toLowerCase());
+        }
+
+        // Populate the panel content safely
+        if (positionData) {
+            if (details) details.textContent = positionData.position;
+            if (positionEl) {
+                // clear
+                positionEl.innerHTML = '';
+                // description
+                const desc = document.createElement('p');
+                desc.textContent = positionData.description;
+                positionEl.appendChild(desc);
+                // roles list
+                if (Array.isArray(positionData.roles) && positionData.roles.length) {
+                    const rolesTitle = document.createElement('h4');
+                    rolesTitle.textContent = 'Roles';
+                    // add a class so we can style it from CSS (center, spacing)
+                    rolesTitle.className = 'roles-title';
+                    positionEl.appendChild(rolesTitle);
+                    const ul = document.createElement('ul');
+                    positionData.roles.forEach(r => {
+                        const li = document.createElement('li');
+                        const strong = document.createElement('strong');
+                        strong.textContent = r.name + ': ';
+                        li.appendChild(strong);
+                        li.appendChild(document.createTextNode(r.description));
+                        ul.appendChild(li);
+                    });
+                    positionEl.appendChild(ul);
+                }
+            }
+        } else {
+            if (details) details.textContent = "Information about " + idOrName;
+            if (positionEl) positionEl.textContent = '';
+        }
+
+        // show panel and shift svg
+        if (panel) {
+            panel.classList.add("active");
+            panel.setAttribute('aria-hidden', 'false');
+        }
+        if (svg) svg.classList.add('shifted');
     }
-   
+
+    // Close the side panel and reset SVG
+    function closeMenu() {
+        if (panel) {
+            panel.classList.remove('active');
+            panel.setAttribute('aria-hidden', 'true');
+        }
+        if (svg) svg.classList.remove('shifted');
+    }
+
+    // expose openMenu to global scope so inline onclick can call it
+    window.openMenu = openMenu;
+
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    // close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+
 
 
 });

@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Role Call</title>
     <link rel="stylesheet" href="main.css">
+    <script src="./Javascript/main.js"></script>
     <link rel="stylesheet" href="./Css/playerProfileHome.css">
+    <script src="./Javascript/playerProfileHome.js"></script>
     
 </head>
 <body>
@@ -87,63 +89,63 @@
 
   <!-- Player Circles -->
   <!-- GK -->
-  <g class="player" onclick="openMenu(1)">
+  <g class="player" data-position="Goalkeeper" onclick="openMenu(this.dataset.position)">
     <circle cx="500" cy="520" r="20" />
     <text x="500" y="520" class="player-text">1</text>
     <title>Goalkeeper</title>
   </g>
 
   <!-- Back Line -->
-  <g class="player" onclick="openMenu(2)">
+  <g class="player" data-position="Full Back" onclick="openMenu(this.dataset.position)">
     <circle cx="800" cy="430" r="20" />
     <text x="800" y="430" class="player-text">2</text>
     <title>Right back</title>
   </g>
-  <g class="player" onclick="openMenu(3)">
+  <g class="player" data-position="Full Back" onclick="openMenu(this.dataset.position)">
     <circle cx="200" cy="430" r="20" />
     <text x="200" y="430" class="player-text">3</text>
     <title>Left Back</title>
   </g>
-  <g class="player" onclick="openMenu(4)">
+  <g class="player" data-position="Center Back" onclick="openMenu(this.dataset.position)">
     <circle cx="380" cy="430" r="20" />
     <text x="380" y="430" class="player-text">4</text>
     <title>Right Center Back</title>
   </g>
-  <g class="player" onclick="openMenu(5)">
+  <g class="player" data-position="Center Back" onclick="openMenu(this.dataset.position)">
     <circle cx="620" cy="430" r="20" />
     <text x="620" y="430" class="player-text">5</text>
     <title>Left Center Back</title>
   </g>
 
   <!-- Midfield -->
-  <g class="player" onclick="openMenu(6)">
+  <g class="player" data-position="Defensive Midfielder" onclick="openMenu(this.dataset.position)">
     <circle cx="500" cy="340" r="20" />
     <text x="500" y="340" class="player-text">6</text>
     <title>Defensive Midfielder</title>
   </g>
-  <g class="player" onclick="openMenu(8)">
+  <g class="player" data-position="Midfielder" onclick="openMenu(this.dataset.position)">
     <circle cx="600" cy="280" r="20" />
     <text x="600" y="280" class="player-text">8</text>
     <title>Midfielder</title>
   </g>
-  <g class="player" onclick="openMenu(10)">
+  <g class="player" data-position="Attacking Midfielder" onclick="openMenu(this.dataset.position)">
     <circle cx="400" cy="280" r="20" />
     <text x="400" y="280" class="player-text">10</text>
     <title>Attacking Midfielder</title>
   </g>
 
   <!-- Forwards -->
-  <g class="player" onclick="openMenu(7)">
+  <g class="player" data-position="Winger" onclick="openMenu(this.dataset.position)">
     <circle cx="300" cy="160" r="20" />
     <text x="300" y="160" class="player-text">7</text>
     <title>Left Winger</title>
   </g>
-  <g class="player" onclick="openMenu(9)">
+  <g class="player" data-position="Striker" onclick="openMenu(this.dataset.position)">
     <circle cx="500" cy="130" r="20" />
     <text x="500" y="130" class="player-text">9</text>
      <title>Striker</title>
   </g>
-  <g class="player" onclick="openMenu(11)">
+  <g class="player" data-position="Winger" onclick="openMenu(this.dataset.position)">
     <circle cx="700" cy="160" r="20" />
     <text x="700" y="160" class="player-text">11</text>
      <title>Right Winger</title>
@@ -151,12 +153,29 @@
 </svg>
 
   <!-- Info Panel -->
-    <div class="info-panel" id="infoPanel">
-      <h2>Player Info</h2>
-      <p id="playerDetails">Click a player to view details.</p>
-    </div>
+  <div class="info-panel" id="infoPanel" aria-hidden="true">
+    <button class="panel-close" id="closePanel" aria-label="Close panel">×</button>
+    <h2 id="panelTitle">Position Information</h2>
+    <h3 id="playerDetails">Click a player to view details.</h3>
+    <div id="positionDescription" class="positionDescription" aria-live="polite"></div>
   </div>
 
-</section>
+<script>
+  async function getMessiData() {
+    try {
+      const response = await fetch('/player/sr:player:81916'); // Replace with Messi's actual ID
+      const data = await response.json();
+      console.log(data); // You can use this to populate your info panel
+    } catch (error) {
+      console.error('Error fetching Messi data:', error);
+    }
+  }
+
+  // Example: Call it when the page loads or when a button is clicked
+  document.addEventListener("DOMContentLoaded", () => {
+     getMessiData(); // Uncomment to run on page load
+  });
+</script>
+
 </body>
 </html>

@@ -44,26 +44,93 @@ svg {
   pointer-events: none;
 }
 
- /* Slide-out panel */
-    .info-panel {
-      width: 0;
-      opacity: 0;
-      overflow: hidden;
-      background-color: #80808099; /* grey with opacity */;
-      color: white;
-      height: 100%;
-      transition: all 0.4s ease;
-      padding: 2rem;
-      box-sizing: border-box;
-    }
+/* Slide-in info panel on the right */
+.info-panel {
+  position: fixed;
+  right: 20px;
+  top: 140px; /* leave room for nav */
+  width: 0;
+  height: calc(100vh - 180px);
+  /* lower background opacity but keep text fully opaque by using RGBA */
+  background: rgba(100,100,100,0.6); /* 60% opacity */
+  color: white;
+  overflow: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 4px; /* sharper corners */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.45); /* slightly sharper shadow */
+  transition: width 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+  z-index: 200;
+}
 
-    .info-panel.active {
-      width: 25vw;
-      opacity: 1;
-    }
+.info-panel.active {
+  width: 380px;
+  opacity: 1;
+}
 
-    /* Shift container when panel is open */
-    .container.shifted {
-      margin-left: -10vw;
-      width: 85vw;
-    }
+.panel-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Shift the SVG left when panel is open */
+svg.shifted {
+  transform: translateX(-190px);
+  transition: transform 0.35s ease;
+}
+
+/* Small boxed background around the panel title */
+.info-panel #panelTitle {
+  display: block;
+  width: fit-content;
+  margin: 0.5rem auto 0.75rem; /* center horizontally and add spacing below */
+  background: rgba(0,0,0,0.65); /* semi-transparent black */
+  border: 1px solid rgba(255,255,255,0.9); /* thin white border */
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 700; /* make the header bold */
+  color: white;
+  box-sizing: border-box;
+}
+
+/* center the player details heading inside the panel */
+.info-panel #playerDetails {
+  text-align: center;
+  margin: 0.5rem auto; /* small vertical spacing */
+  font-weight: 600; /* keep it prominent but slightly lighter than the title */
+}
+
+/* center and space the dynamically-created Roles header */
+.info-panel .roles-title {
+  text-align: center;
+  margin: 0.5rem auto 0.35rem;
+  font-weight: 600;
+}
+
+/* remove bullets and indent for role lists inside the info panel */
+.info-panel ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  text-align: center;
+  
+}
+
+.info-panel ul li {
+  margin-bottom: 0.45rem; /* spacing between items */
+}
+
+/* center the position description paragraph (the first <p> appended into #positionDescription) */
+.info-panel #positionDescription p:first-child {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
