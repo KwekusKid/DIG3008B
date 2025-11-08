@@ -1,7 +1,7 @@
 :root{
-    /* Swap default colours: background should be light, text dark */
-    --bgColour: white;
-    --textColour: black;
+    /* Site default: dark background with light text */
+    --bgColour: black;
+    --textColour: white;
 }
 
 * {
